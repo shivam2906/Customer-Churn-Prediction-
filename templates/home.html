@@ -1,0 +1,225 @@
+<html>
+<head>
+	<title> Customer Churn Prediction </title>
+  	
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  	<style>
+  		body {
+  			background-image: url("../static/background_blurr.png");
+  			background-size: cover;
+
+  		}
+  		form{
+  			text-align: center;
+  		}
+  		input{
+  			width: 25%;
+  		}
+  		/*input [type= text]{
+  			width: 25%;
+  		}*/
+  		input[type=submit] {
+			  background-color: green;
+			  color: black;
+			  width: 10%;
+  		}
+  		button[type=submit] {
+			  /*background-color: green;*/
+			  /*color: white;*/
+			  width: 10%;
+		}
+  		select {
+			width: 25%;
+		}
+  		label {
+
+			font-size: 20px;
+			display: inline-block;
+			width: 100px;
+			text-align: right;
+		}​
+		.row{
+
+			align-items: center;
+			width: 25%;
+			background-color: tomato;
+			color: black;
+			border: 2px solid black;
+			margin: 20px;
+			padding: 20px;
+		}
+  		
+  	</style>
+</head>
+
+<body>
+  	<br></br>
+
+	<center>
+		<h1 style="color:white">CUSTOMER CHURN PREDICTION </h1>
+	</center>
+
+	<br></br>
+	<br></br>
+
+	<form action="{{ url_for('predict')}}" method="post">
+
+		<label for = "Senior_Citizen" style="color: white">Senior Citizen</label>
+		<select id="Senior_Citizen" name="SeniorCitizen" >
+			<option value="" selected disabled hidden></option>
+	      	<option value="1">Yes</option>
+	      	<option value="0">No</option>
+		</select>
+
+		<br></br>
+
+		<label for = "Partner" style="color: white">Partner</label>
+		<select id="Partner" name="Partner">
+			<option value="" selected disabled hidden></option>
+	      	<option value="Yes">Yes</option>
+	      	<option value="No">No</option>
+		</select>
+
+		<br></br>
+
+		<label for = "Dependents" style="color: white">Dependents</label>
+		<select id="Dependents" name="Dependents">
+			<option value="" selected disabled hidden></option>
+	      	<option value="Yes">Yes</option>
+	      	<option value="No">No</option>
+		</select>
+		<br></br>
+
+		<label for = "Multiple_Lines" style="color: white">Multiple Lines</label>
+		<select id="Multiple_Lines" name="MultipleLines">
+			<option value="" selected disabled hidden></option>
+	      	<option value="Yes">Yes</option>
+	      	<option value="No">No</option>
+	      	<option value="No phone service">No Phone Service</option>
+
+		</select>
+
+		<br></br>
+
+		<label for = "Internet_Service" style="color: white">Internet Service</label>
+		<select id="Internet_Service" name="InternetService">
+			<option value="" selected disabled hidden></option>
+	      	<option value="DSL">DSL</option>
+	      	<option value="Fiber optic">Fiber Optic</option>
+	      	<option value="No">No</option>
+		</select>
+
+		<br></br>
+
+		<label for = "Online_Security" style="color: white">Online Security</label>
+		<select id="Online_Security" name="OnlineSecurity">
+			<option value="" selected disabled hidden></option>
+	      	<option value="Yes">Yes</option>
+	      	<option value="No">No</option>
+	      	<option value="No internet service">No Internet Service</option>
+		</select>
+
+		<br></br>
+
+		<label for = "Online_Backup" style="color: white">Online Backup</label>
+		<select id="Online_Backup" name="OnlineBackup">
+			<option value="" selected disabled hidden></option>
+	      	<option value="Yes">Yes</option>
+	      	<option value="No">No</option>
+	      	<option value="No internet service">No Internet Service</option>
+		</select>
+	
+		<br></br>
+	
+		<label for = "Device_protection" style="color: white">Device Protection</label>
+		<select id="Device_protection" name="DeviceProtection">
+			<option value="" selected disabled hidden></option>
+	      	<option value="Yes">Yes</option>
+	      	<option value="No">No</option>
+	      	<option value="No internet service">No Internet Service</option>
+		</select>
+
+		<br></br>
+
+		<label for = "Tech_Support" style="color: white">Tech Support</label>
+		<select id="Tech_Support" name="TechSupport">
+			<option value="" selected disabled hidden></option>
+	      	<option value="Yes">Yes</option>
+	      	<option value="No">No</option>
+	      	<option value="No internet service">No Internet Service</option>
+		</select>
+
+		<br></br>
+
+		<label for = "Stremming_TV" style="color: white">Stremming TV</label>
+		<select id="Stremming_TV" name="StremmingTV">
+			<option value="" selected disabled hidden></option>
+	      	<option value="Yes">Yes</option>
+	      	<option value="No">No</option>
+	      	<option value="No internet service">No Internet Service</option>
+		</select>
+
+		<br></br>
+
+		<label for = "Stremming_Movies" style="color: white">Stremming Movies</label>
+		<select id="Stremming_Movies" name="StremmingMovies">
+			<option value="" selected disabled hidden></option>
+	      	<option value="Yes">Yes</option>
+	      	<option value="No">No</option>
+	      	<option value="No internet service">No Internet Service</option>
+		</select>
+
+		<br></br>
+
+		<label for = "Paperless_Billing" style="color: white">Paperless Billing</label>
+		<select id="Paperless_Billing" name="PaperlessBilling">
+			<option value="" selected disabled hidden></option>
+	      	<option value="Yes">Yes</option>
+	      	<option value="No">No</option>
+		</select>
+
+		<br></br>
+
+		<label for = "Payment_Method" style="color: white">Payment Method</label>
+		<select id="Payment_Method" name="PaymentMethod">
+			<option value="" selected disabled hidden></option>
+	      	<option value="Electronic check">Electronic check</option>
+	      	<option value="Mailed check">Mailed check</option>
+	      	<option value="Bank transfer (automatic)">Bank transfer (automatic)</option>
+	      	<option value="Credit card (automatic)">Credit card (automatic)</option>
+		</select>
+
+		<br></br>
+
+		<label for = "tenure" style="color: white">Tenure</label>
+		<input type = 'text' id = 'tenure', name = 'tenure', required = 'required', placeholder = 'only integer value' >
+	
+		<br></br>
+
+
+		<label for = "Monthly_Charges" style="color: white">Monthly Charges</label>
+		<input type = 'text' id = 'Monthly_Charges', name = 'MonthlyCharges', required = 'required', placeholder = 'eg. 25.50' >
+		
+	
+
+
+		<br></br>
+
+		<label></label>
+		<button type="submit" class="btn btn-primary" name="submit">PREDICT</button>
+
+
+	</form>
+
+	<br></br>
+	<br></br>
+	
+	<center> <h3>{{output1}}</h3></center>
+	<br></br>
+	<center> <h3>{{output2}}</h3></center>
+	
+</body>
